@@ -85,11 +85,8 @@ const Navigation = () => {
   return (
     <Navbar className="p-4">
       <Navbar.Brand as={RedwoodLink} to={routes.home()}>
-        <Trans i18nKey="layouts.brand">Surface Redwood Template</Trans>
+        <Trans i18nKey="layouts.brand">Surface Data Collective</Trans>
       </Navbar.Brand>
-      <Nav pullRight>
-        <UserItem />
-      </Nav>
     </Navbar>
   )
 }
