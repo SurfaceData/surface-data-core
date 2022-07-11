@@ -31,6 +31,7 @@ const Routes = () => {
       </Private>
       <Set wrap={StandardLayout}>
         <Route path="/" page={HomePage} name="home" />
+        <Route path="/license-generator" page={LicenseGeneratorPage} name="licenseGenerator" />
         <Route notfound page={NotFoundPage} />
       </Set>
     </Router>

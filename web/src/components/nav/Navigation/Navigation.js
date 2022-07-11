@@ -93,8 +93,11 @@ const Navigation = () => {
       <Navbar.Brand as={RedwoodLink} to={routes.home()}>
         <Trans i18nKey="layouts.brand">Surface Data Collective</Trans>
       </Navbar.Brand>
+      <Nav.Item as={RedwoodLink} to={routes.licenseGenerator()}>
+        <Trans i18nKey="layouts.navLicenseGenerator">License Generator</Trans>
+      </Nav.Item>
       <Nav.Item as={ExternalLink} href="https://catalog.surfacedata.org">
-        <Trans i18nKey="layouts.brand">Catalog</Trans>
+        <Trans i18nKey="layouts.navCatalog">Catalog</Trans>
       </Nav.Item>
     </Navbar>
   )
