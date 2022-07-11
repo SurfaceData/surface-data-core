@@ -1,6 +1,7 @@
 import { useAuth } from '@redwoodjs/auth'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import md5 from 'md5'
+import { forwardRef } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { Navbar, Nav, Dropdown } from 'rsuite'
 import styled from 'styled-components'
@@ -81,12 +82,20 @@ const UserItem = () => {
   )
 }
 
+const ExternalLink = forwardRef((props, ref) => {
+  const { href, as, ...rest } = props
+  return <a target="_" ref={ref} href={href} {...rest} />
+})
+
 const Navigation = () => {
   return (
     <Navbar className="p-4">
       <Navbar.Brand as={RedwoodLink} to={routes.home()}>
         <Trans i18nKey="layouts.brand">Surface Data Collective</Trans>
       </Navbar.Brand>
+      <Nav.Item as={ExternalLink} href="https://catalog.surfacedata.org">
+        <Trans i18nKey="layouts.brand">Catalog</Trans>
+      </Nav.Item>
     </Navbar>
   )
 }

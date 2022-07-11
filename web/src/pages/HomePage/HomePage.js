@@ -44,69 +44,73 @@ const HomePage = () => {
       <Title>How we create</Title>
 
       <ExplainerContainer>
-        We generate new high quality data by following a simple multi-step
-        process.
+        <Text>
+          We build open source tools that make it easy for communities to
+          govern, and later manage, their own datasets.
+        </Text>
+
         <ExplainerRow>
-          <img
-            height={200}
-            width={200}
-            alt="Creating quality labels or translations"
-            src="/svg/undraw_create_re_57a3.svg"
-          />
+          <a target="_" href="https://catalog.surfacedata.org/">
+            <img
+              height={200}
+              width={200}
+              alt="Managing your dataset as a commons"
+              src="/svg/undraw_flowers_vx06.svg"
+            />
+          </a>
           <ExplainerDetail>
-            First, we create new translations or quality labels for the
-            sentences we already have. When translating, we are helping to
-            create new data for languages we each care about. When creating
-            quality labels, we are helping figure out which sentences in our
-            language are good and which may not actually be in our language.
+            <p>(In Development)</p>
+            <br />
+            First, we're building a data catalog that ensures any datasets you
+            create stay within your oversight. We make it easy to distribute
+            your data through HuggingFace Datasets while at the same time
+            retaining the rights to always review who wishes to use the dataset
+            and approve them on a case by case basis.
+            <p>
+              Test out our demo{' '}
+              <a target="_" href="https://catalog.surfacedata.org/">
+                catalog
+              </a>
+            </p>
           </ExplainerDetail>
         </ExplainerRow>
+
         <ExplainerRow>
           <ExplainerDetail>
-            Next, for every translation or every quality tag, someone else in
-            the collective double checks that the submission looks good and
-            generally makes sense. When evaluating, you can either mark
-            something as <b>correct</b> or
-            <b>incorrect</b> or rate something on a sliding quality scale.
+            <p>(In Planning)</p>
+            <br />
+            Next, we're making it easier for communities to collect their own
+            datasets by capturing content you're already writing. We plan to
+            start by collecting data published to publications powered by{' '}
+            <a target="_" href="https://ghost.org/">
+              Ghost
+            </a>
+            . The extracted raw data will be collated into raw easy to use
+            machine learning datasets that can be managed by the Catalog.
           </ExplainerDetail>
           <img
             height={200}
             width={200}
-            alt="Rating quality labels or translations"
-            src="/svg/undraw_reviews_lp8w.svg"
-          />
-        </ExplainerRow>
-        <ExplainerRow>
-          <img
-            height={200}
-            width={200}
-            alt="Cross referencing ratings to find the best results"
+            alt="Collecting new datasets for your language"
             src="/svg/undraw_detailed_examination_re_ieui.svg"
           />
-          <ExplainerDetail>
-            Finally, after we have several submissions and reviews, we use a
-            little bit of machine learning to figure out which translations and
-            which labels meet our quality bar. We take into account how often
-            reviewers agree with each other and when content might be a little
-            unusual or more difficult than expected. Overall, based on multiple
-            research papers, our approach helps produce extremely high quality
-            data.
-          </ExplainerDetail>
         </ExplainerRow>
         <ExplainerRow>
-          <ExplainerDetail>
-            The end result is a corpus of new language data that we created
-            together. Overtime we will be adding even better support for
-            collective data governance. Soon, collective members will be able to
-            help decide what data we should create in the first place and then
-            ultimately help decide what we do with the data we have created.
-          </ExplainerDetail>
           <img
             height={200}
             width={200}
-            alt="Creating together to make the best data"
-            src="/svg/undraw_flowers_vx06.svg"
+            alt="Curating the data you're collecting"
+            src="/svg/undraw_reviews_lp8w.svg"
           />
+          <ExplainerDetail>
+            <p>(In Planning)</p>
+            <br />
+            Knowing that not all datasets are clean, we're later going to build
+            data curation tools that let communities annotate, review, and
+            cleanup datasets. To make this work for everyone our key feature
+            will be support for both online and offline contributions so that
+            community members don't need to always be connected to a network.
+          </ExplainerDetail>
         </ExplainerRow>
       </ExplainerContainer>
     </>
