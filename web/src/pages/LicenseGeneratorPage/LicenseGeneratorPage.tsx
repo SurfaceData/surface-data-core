@@ -101,25 +101,37 @@ const LicenseGeneratorPage = () => {
   ]
 
   const [dataRight, setDataRight] = useState(0)
-  const [includedDataRights, setIncludedDataRights] =
-    useState(dataRightsClauses.slice(0, 1))
-  const [excludedDataRights, setExcludedDataRights] =
-    useState(dataRightsClauses.slice(1))
+  const getDataRightBlock = (rightIndex) => {
+    const includedBlock = dataRightsClauses.slice(0, rightIndex + 1).map(
+      right => `     1. ${right}`).join("\n")
+    const excludedBlock = dataRightsClauses.slice(rightIndex + 1).map(
+      right => `     1. ${right}`).join("\n")
+    const includeStanza = '1.  Licensor hereby grants the following rights to Licensee with respect to making use of the Data itself:'
+    const excludeStanza = '1.  The rights granted in Licensed Rights to the Data(1) above exclude the following rights with respect to making use of the Data itself:'
+    return `${includeStanza}\n${includedBlock}\n${excludeStanza}\n${excludedBlock}`
+  }
+
+  const [dataRightsBlock, setDataRightsBlock] = useState(getDataRightBlock(0))
 
   const [modelRight, setModelRight] = useState(0)
-  const [includedModelRights, setIncludedModelRights] =
-    useState(modelRightsClauses.slice(0, 1))
-  const [excludedModelRights, setExcludedModelRights] =
-    useState(modelRightsClauses.slice(1))
+  const getModelRightBlock = (rightIndex) => {
+    const includedBlock = modelRightsClauses.slice(0, rightIndex + 1).map(
+      right => `     1. ${right}`).join("\n")
+    const excludedBlock = modelRightsClauses.slice(rightIndex + 1).map(
+      right => `     1. ${right}`).join("\n")
+    const includeStanza = '1.  Licensor hereby grants the following rights to Licensee with respect to making use of the Data in conjunction with Models.'
+    const excludeStanza = '1.  The rights granted in Licensed Rights to derived Models(1) above exclude the following rights with respect to making use of the Data in conjunction with Models:'
+    return `${includeStanza}\n${includedBlock}\n${excludeStanza}\n${excludedBlock}`
+  }
+  const [modelRightsBlock, setModelRightsBlock] = useState(getModelRightBlock(0))
 
   const handleDataRightSelection = (rightIndex) => {
-    setIncludedDataRights(dataRightsClauses.slice(0, rightIndex + 1))
-    setExcludedDataRights(dataRightsClauses.slice(rightIndex + 1))
+    setDataRightsBlock(getDataRightBlock(rightIndex))
     setDataRight(rightIndex)
   }
+
   const handleModelRightSelection = (rightIndex) => {
-    setIncludedModelRights(modelRightsClauses.slice(0, rightIndex + 1))
-    setExcludedModelRights(modelRightsClauses.slice(rightIndex + 1))
+    setModelRightsBlock(getModelRightBlock(rightIndex))
     setModelRight(rightIndex)
   }
 
@@ -158,35 +170,9 @@ const LicenseGeneratorPage = () => {
 
           <br/>
 
-          <p>
-            Licensor hereby grants the following rights to Licensee with respect
-            to making use of the Data itself:
-          </p>
-
-          <br/>
-
-          <List size="md" hover>
-            {includedDataRights.map( (right, index) => (
-              <List.Item key={`include-data-right-${index}`} index={index}>
-                {right}
-              </List.Item>
-            ))}
-          </List>
-
-          <br/>
-
-          <p>
-            The rights granted in (a) above exclude the following rights with
-            respect to making use of the Data itself:
-          </p>
-          <br/>
-          <List size="md" hover>
-            {excludedDataRights.map( (right, index) => (
-              <List.Item key={`exclude-data-right-${index}`} index={index}>
-                {right}
-              </List.Item>
-            ))}
-          </List>
+          <ReactMarkdown className="markdown-body">
+            {dataRightsBlock}
+          </ReactMarkdown>
         </Panel>
 
         <Panel header="Licensed Rights to derived Models" bordered>
@@ -205,33 +191,10 @@ const LicenseGeneratorPage = () => {
 
           <br/>
 
-          <p>
-            Licensor hereby grants the following rights to Licensee with respect
-            to making use of the Data in conjunction with Models.
-          </p>
-          <br/>
-          <List size="md" hover>
-            {includedModelRights.map( (right, index) => (
-              <List.Item key={`include-model-right-${index}`} index={index}>
-                {right}
-              </List.Item>
-            ))}
-          </List>
+          <ReactMarkdown className="markdown-body">
+            {modelRightsBlock}
+          </ReactMarkdown>
 
-          <br/>
-
-          <p>
-            The rights granted in (a) above exclude the following rights with
-            respect to making use of the Data in conjunction with Models:
-          </p>
-          <br/>
-          <List size="md" hover>
-            {excludedModelRights.map( (right, index) => (
-              <List.Item key={`exclude-model-right-${index}`} index={index}>
-                {right}
-              </List.Item>
-            ))}
-          </List>
         </Panel>
 
         <Panel header="Attribution" bordered>
